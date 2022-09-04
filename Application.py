@@ -26,7 +26,7 @@ with header :
 
 with data :
     st.header("The Dataset")
-    df = pd.read_csv("Data_Set")
+    df = pd.read_csv("Data_Set.csv")
     df.dropna(inplace = True)
     df.drop_duplicates(inplace = True)
     st.write(df.head())
