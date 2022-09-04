@@ -81,7 +81,7 @@ with template :
             st.sidebar.header("The **Fake** News")
             st.sidebar.write(random_choice_fake)
         elif btn_4 : 
-            model = tf.keras.models.load_model("NLP/NLP.h5")
+            model = tf.keras.models.load_model("NLP.h5")
             prediction = np.average(tf.math.round(tf.squeeze(model.predict(pad_sequences(sequences=token.texts_to_sequences(random_choice_fake) ,          maxlen=avg_sequence_size,padding="post" , truncating="post")))))
             proba = tf.squeeze(model.predict(pad_sequences(sequences=token.texts_to_sequences(random_choice_fake) ,maxlen=avg_sequence_size,padding="post" ,truncating="post")))
             st.sidebar.write("The prediction : **This news is Fake** and the probablity is {:.2%}".format(np.round(prediction), np.round(np.average(proba), 2)))
@@ -95,7 +95,7 @@ with template :
             st.sidebar.write("The **Real** News")
             st.sidebar.write(random_choice_real)
         elif btn_6 : 
-            model = tf.keras.models.load_model("NLP/NLP.h5")
+            model = tf.keras.models.load_model("NLP.h5")
             prediction = np.average(tf.math.round(tf.squeeze(model.predict(pad_sequences(sequences=token.texts_to_sequences(random_choice_real) ,          maxlen=avg_sequence_size,padding="post" , truncating="post")))))
             proba = tf.squeeze(model.predict(pad_sequences(sequences=token.texts_to_sequences(random_choice_real) ,maxlen=avg_sequence_size,padding="post" ,truncating="post")))
             st.sidebar.write("The prediction : **This news is Real** and the probablity is {:.2%}".format(np.round(prediction), np.round(np.average(proba), 2)))
@@ -105,7 +105,7 @@ with template :
 with predictions :        
     btn = st.button("Predict")
     if btn : 
-        model = tf.keras.models.load_model("NLP/NLP.h5")
+        model = tf.keras.models.load_model("NLP.h5")
         prediction = np.average(tf.math.round(tf.squeeze(model.predict(pad_sequences(sequences=token.texts_to_sequences(inputs) ,        maxlen=avg_sequence_size,padding="post" , truncating="post")))))
         proba = tf.squeeze(model.predict(pad_sequences(sequences=token.texts_to_sequences(inputs) ,        maxlen=avg_sequence_size,padding="post" , truncating="post")))
         st.write("The prediction is {} and the probablity is {:.2%}".format(np.round(prediction), np.round(np.average(proba), 2)))
